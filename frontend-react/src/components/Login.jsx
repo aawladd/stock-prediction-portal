@@ -19,15 +19,13 @@ const Login = () => {
         setLoading(true)
 
         const userData = {username, password}
-        console.log('userData ====>>', userData)
 
         try{
           const response = await axios.post('http://127.0.0.1:8000/api/v1/token/', userData)
           localStorage.setItem('accessToken', response.data.access)
           localStorage.setItem('refreshToken', response.data.refresh)
-          console.log('Login Successful')
           setIsLoggedIn(true)
-          navigate('/')
+          navigate('/dashboard')
 
         }
         catch(error){
